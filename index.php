@@ -1,3 +1,5 @@
 <?php
-header('Location: views/room/index.php');
+
+
+header('Location: views/room/reservierungen.php');
 ?>
