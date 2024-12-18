@@ -16,13 +16,13 @@ class Gast implements DatabaseObject
 
     }
 
-    public function valgastIdate(){
-        return $this->valgastIdateHelper('gastName', 'gastName', $this->gastName, 32) &
-            $this->valgastIdateHelper('Domäne', 'email', $this->email, 128) &
-            $this->valgastIdateHelper('CMS-BenutzergastName', 'adresse', $this->adresse, 64);
+    public function validate(){
+        return $this->validateHelper('gastName', 'gastName', $this->gastName, 32) &
+            $this->validateHelper('Email', 'email', $this->email, 128) &
+            $this->validateHelper('Adresse', 'adresse', $this->adresse, 64);
     }
 
-    public function valgastIdateHelper($label, $key, $value, $maxLength){
+    public function validateHelper($label, $key, $value, $maxLength){
         if(strlen($value) == 0){
             $this->errors[$key] = "$label darf nicht leer sein";
             return false;
@@ -35,7 +35,7 @@ class Gast implements DatabaseObject
     }
 
     public function save(){
-        if ($this->valgastIdate()) {
+        if ($this->validate()) {
 
             if($this->gastId =! null && $this->gastId > 0){
                 $this->update();
