@@ -149,13 +149,13 @@ class Gast implements DatabaseObject
 
     public function update()
     {
-        $sql = "UPDATE gast SET gastName = ?, email = ?, adresse = ? WHERE gastId = ?";
+        $sql = "UPDATE gast SET `gastName`=?,`email`=?,`adresse`=? WHERE gastId=?";
         $db = Database::connect();
         $stmt = $db->prepare($sql);
         $stmt->execute(array($this->gastName, $this->email, $this->adresse, $this->gastId));
-        $lastgastId = $db->lastInsertgastId();
+        $lastID = $db->lastInsertId();
         Database::disconnect();
-        return $lastgastId;
+        return $lastID;
     }
 
     public static function get($gastId)
