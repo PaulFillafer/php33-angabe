@@ -4,7 +4,7 @@ require_once "DatabaseObject.php";
 
 class Gast implements DatabaseObject
 {
-    private $id = 0;
+    private $gastId = 0;
     private $gastName = '';
     private $email = '';
     private $adresse = '';
@@ -16,13 +16,13 @@ class Gast implements DatabaseObject
 
     }
 
-    public function validate(){
-        return $this->validateHelper('gastName', 'gastName', $this->gastName, 32) &
-            $this->validateHelper('Domäne', 'email', $this->email, 128) &
-            $this->validateHelper('CMS-BenutzergastName', 'adresse', $this->adresse, 64);
+    public function valgastIdate(){
+        return $this->valgastIdateHelper('gastName', 'gastName', $this->gastName, 32) &
+            $this->valgastIdateHelper('Domäne', 'email', $this->email, 128) &
+            $this->valgastIdateHelper('CMS-BenutzergastName', 'adresse', $this->adresse, 64);
     }
 
-    public function validateHelper($label, $key, $value, $maxLength){
+    public function valgastIdateHelper($label, $key, $value, $maxLength){
         if(strlen($value) == 0){
             $this->errors[$key] = "$label darf nicht leer sein";
             return false;
@@ -35,12 +35,12 @@ class Gast implements DatabaseObject
     }
 
     public function save(){
-        if ($this->validate()) {
+        if ($this->valgastIdate()) {
 
-            if($this->id =! null && $this->id > 0){
+            if($this->gastId =! null && $this->gastId > 0){
                 $this->update();
             } else {
-                $this->id = $this->create();
+                $this->gastId = $this->create();
             }
 
 
@@ -63,7 +63,7 @@ class Gast implements DatabaseObject
     /**
      * @param string $email
      */
-    public function setemail($email)
+    public function setEmail($email)
     {
         $this->email = $email;
     }
@@ -71,17 +71,17 @@ class Gast implements DatabaseObject
     /**
      * @return int
      */
-    public function getId()
+    public function getgastId()
     {
-        return $this->id;
+        return $this->gastId;
     }
 
     /**
-     * @param int $id
+     * @param int $gastId
      */
-    public function setId($id)
+    public function setgastId($gastId)
     {
-        $this->id = $id;
+        $this->gastId = $gastId;
     }
 
     /**
@@ -149,21 +149,21 @@ class Gast implements DatabaseObject
 
     public function update()
     {
-        $sql = "UPDATE gast SET gastName = ?, email = ?, adresse = ? WHERE id = ?";
+        $sql = "UPDATE gast SET gastName = ?, email = ?, adresse = ? WHERE gastId = ?";
         $db = Database::connect();
         $stmt = $db->prepare($sql);
-        $stmt->execute(array($this->gastName, $this->email, $this->adresse, $this->id));
-        $lastID = $db->lastInsertId();
+        $stmt->execute(array($this->gastName, $this->email, $this->adresse, $this->gastId));
+        $lastgastId = $db->lastInsertgastId();
         Database::disconnect();
-        return $lastID;
+        return $lastgastId;
     }
 
-    public static function get($id)
+    public static function get($gastId)
     {
-        $sql = "SELECT * FROM gast WHERE id = ?";
+        $sql = "SELECT * FROM gast WHERE gastId = ?";
         $db = Database::connect();
         $stmt = $db->prepare($sql);
-        $stmt->execute(array($id));
+        $stmt->execute(array($gastId));
         $item = $stmt->fetchObject('Gast');
         Database::disconnect();
         return $item !== false ? $item : null;
@@ -180,12 +180,12 @@ class Gast implements DatabaseObject
         return $items;
     }
 
-    public static function delete($id)
+    public static function delete($gastId)
     {
-        $sql = "DELETE FROM gast WHERE id = ?";
+        $sql = "DELETE FROM gast WHERE gastId = ?";
         $db = Database::connect();
         $stmt = $db->prepare($sql);
-        $stmt->execute(array($id));
+        $stmt->execute(array($gastId));
         Database::disconnect();
     }
 }

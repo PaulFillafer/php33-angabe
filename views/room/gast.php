@@ -56,11 +56,11 @@
                 echo "<td>" . $c->getEmail() . "</td>";
                 echo "<td>" . $c->getAdresse() . "</td>";
                 echo "<td>";
-                echo '<a class="btn btn-info" href="view.php?id=' . $c->getId() . '"><span class="glyphicon glyphicon-eye-open"></span></a>';
+                echo '<a class="btn btn-info" href="gast_view.php?id=' . $c->getgastId() . '"><span class="glyphicon glyphicon-eye-open"></span></a>';
                 echo '&nbsp;';
-                echo '<a class="btn btn-info" href="update.php?id=' . $c->getId() . '"><span class="glyphicon glyphicon-pencil"></span></a>';
+                echo '<a class="btn btn-info" href="gast_update.php?id=' . $c->getgastId() . '"><span class="glyphicon glyphicon-pencil"></span></a>';
                 echo '&nbsp;';
-                echo '<a class="btn btn-info" href="delete.php?id=' . $c->getId() . '"><span class="glyphicon glyphicon-remove"></span></a>';
+                echo '<a class="btn btn-info" href="gast_delete.php?id=' . $c->getgastId() . '"><span class="glyphicon glyphicon-remove"></span></a>';
                 echo '&nbsp;';
                 echo "<tr/>";
             }
