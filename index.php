@@ -14,10 +14,10 @@
     <div class="collapse navbar-collapse">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link" href="reservierungen.php">Reservierungen</a>
+                <a class="nav-link" href="views/room/reservierungen.php">Reservierungen</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="zimmer.php">Zimmer</a>
+                <a class="nav-link" href="views/room/zimmer.php">Zimmer</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="views/room/gast.php">Gäste</a>
