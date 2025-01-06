@@ -160,18 +160,18 @@ class Reservierung implements DatabaseObject
 
     public static function get($id)
     {
-        $sql = "SELECT gast.gastName, zimmer.name, start, ende FROM `reservierung` INNER JOIN gast ON reservierung.gastId=gast.gastId INNER JOIN zimmer ON reservierung.zimmerId = zimmer.zimmerId WHERE id = ?";
+        $sql = "SELECT gast.gastName as 'gastId', zimmer.name as 'zimmerId', start, ende FROM `reservierung` INNER JOIN gast ON reservierung.gastId=gast.gastId INNER JOIN zimmer ON reservierung.zimmerId = zimmer.zimmerId WHERE id = ?";
         $db = Database::connect();
         $stmt = $db->prepare($sql);
         $stmt->execute(array($id));
-        $item = $stmt->fetchObject('Zimmer');
+        $item = $stmt->fetchObject('Reservierung');
         Database::disconnect();
         return $item !== false ? $item : null;
     }
 
     public static function getAll()
     {
-        $sql = "SELECT gast.gastName as 'gastId', zimmer.name as 'zimmerId', start, ende FROM `reservierung` INNER JOIN gast ON reservierung.gastId=gast.gastId INNER JOIN zimmer ON reservierung.zimmerId = zimmer.zimmerId;";
+        $sql = "SELECT gast.gastName as 'gastId', zimmer.name as 'zimmerId', start, ende, id FROM `reservierung` INNER JOIN gast ON reservierung.gastId=gast.gastId INNER JOIN zimmer ON reservierung.zimmerId = zimmer.zimmerId;";
         $db = Database::connect();
         $stmt = $db->prepare($sql);
         $stmt->execute();
