@@ -56,7 +56,7 @@
                 echo "<td>" . $c->getNr() . "</td>";
                 echo "<td>" . $c->getName() . "</td>";
                 echo "<td>" . $c->getPerson() . "</td>";
-                echo "<td>" . $c->getPreis() . "</td>";
+                echo "<td>" . $c->getPreis() . " €" . "</td>";
                 echo "<td>" . $c->getBalkon() . "</td>";
                 echo "<td>";
                 echo '<a class="btn btn-info" href="zimmer_view.php?id=' . $c->getzimmerId() . '"><span class="glyphicon glyphicon-eye-open"></span></a>';
