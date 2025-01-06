@@ -133,7 +133,7 @@ class Zimmer implements DatabaseObject
         $sql = "INSERT INTO zimmer (nr, name, person, preis, balkon) Values (?, ?, ?, ?, ?)";
         $db = Database::connect();
         $stmt = $db->prepare($sql);
-        $stmt->execute(array($this->nr, $this->name, $this->person, $this->preis, $this->balkon, $this->balkon));
+        $stmt->execute(array($this->nr, $this->name, $this->person, $this->preis, $this->balkon));
         $lastID = $db->lastInsertId();
         Database::disconnect();
         return $lastID;
