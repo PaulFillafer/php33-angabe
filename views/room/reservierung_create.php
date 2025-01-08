@@ -84,7 +84,7 @@ if (!empty($_POST)) {
             <div class="col-md-5">
                 <div class="form-group required ">
                     <label class="control-label">Start 2025-04-18 *</label>
-                    <input type="text" class="form-control" name="start" maxlength="64"
+                    <input type="date" class="form-control" name="start" maxlength="64"
                            value="<?= $c->getStart()?>">
 
                     <?php
@@ -107,7 +107,7 @@ if (!empty($_POST)) {
             <div class="col-md-5">
                 <div class="form-group required ">
                     <label class="control-label">Ende 2025-04-18 *</label>
-                    <input type="text" class="form-control" name="ende" maxlength="64"
+                    <input type="date" class="form-control" name="ende" maxlength="64"
                            value="<?= $c->getEnde()?>">
 
                     <?php
